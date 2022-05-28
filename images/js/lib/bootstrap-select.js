@@ -488,7 +488,7 @@
         // Get the class and text for the option
         var optionClass = this.className || '',
             inline = this.style.cssText,
-            text = $this.data('content') ? $this.data('content') : $this.html(),
+            text = $this.data('content') ? $this.data('content') : $this.php(),
             tokens = $this.data('tokens') ? $this.data('tokens') : null,
             subtext = typeof $this.data('subtext') !== 'undefined' ? '<small class="text-muted">' + $this.data('subtext') + '</small>' : '',
             icon = typeof $this.data('icon') !== 'undefined' ? '<span class="' + that.options.iconBase + ' ' + $this.data('icon') + '"></span> ' : '',
@@ -593,7 +593,7 @@
           } else if ($this.data('content') && that.options.showContent) {
             return $this.data('content');
           } else {
-            return icon + $this.html() + subtext;
+            return icon + $this.php() + subtext;
           }
         }
       }).toArray();
@@ -628,7 +628,7 @@
 
       //strip all html-tags and trim the result
       this.$button.attr('title', $.trim(title.replace(/<[^>]*>?/g, '')));
-      this.$button.children('.filter-option').html(title);
+      this.$button.children('.filter-option').php(title);
 
       this.$element.trigger('rendered.bs.select');
     },
@@ -1213,7 +1213,7 @@
             if (!!$no_results.parent().length) {
               $no_results.remove();
             }
-            $no_results.html(that.options.noneResultsText.replace('{0}', '"' + htmlEscape(that.$searchbox.val()) + '"')).show();
+            $no_results.php(that.options.noneResultsText.replace('{0}', '"' + htmlEscape(that.$searchbox.val()) + '"')).show();
             that.$menuInner.append($no_results);
           } else if (!!$no_results.parent().length) {
             $no_results.remove();

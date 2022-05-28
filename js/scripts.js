@@ -214,7 +214,7 @@
             event.preventDefault();
             $('#awe-popup-wrap, #awe-popup-overlay').removeClass('in');
             $('body').removeClass('awe-overflow-h');
-            $('#awe-popup-wrap .awe-popup-content').html('');
+            $('#awe-popup-wrap .awe-popup-content').php('');
             return false;
         });
 
@@ -261,7 +261,7 @@
         })
             .done(function (data) {
 
-                $(id).html(data);
+                $(id).php(data);
 
                 // Apply callback
                 if (callback) {
@@ -537,7 +537,7 @@
 
             var nextYear = new Date(new Date().getFullYear() + 1, 1 - 1, 26);
             $('#countdown').countdown(nextYear, function (event) {
-                var $this = $(this).html(event.strftime(''
+                var $this = $(this).php(event.strftime(''
                     + '<div class="item"><span class="count">%D</span><span>Days</span></div>'
                     + '<div class="item"><span class="count">%H</span><span>Hours</span></div>'
                     + '<div class="item"><span class="count">%M</span><span>Minutes</span></div>'
@@ -557,7 +557,7 @@
                 if ($this.attr('data-end') !== '' && typeof $this.attr('data-end') !== 'undefined') {
 
                     $this.countdown(end_date, function (event) {
-                        $(this).html(
+                        $(this).php(
                             event.strftime('<span> %D <span>Days</span></span> <span> %H <span>HOURS</span></span> <span> %M <span>MINUTES</span></span> <span> %S <span>SECONDS</span></span>')
                         );
                     });
@@ -1027,7 +1027,7 @@
 
             $('.statistics_item').appear(function () {
 
-                var count_element = $('.count', this).html();
+                var count_element = $('.count', this).php();
                 $(".count", this).countTo({
                     from: 0,
                     to: count_element,
@@ -1094,7 +1094,7 @@
                     success: function (responseText, statusText, xhr, $form) {
                         $('#contact-content').slideUp(600, function () {
                             $('#send-contact-form input[type=text], #send-contact-form textarea').val('');
-                            $('#contact-content').html(responseText).slideDown(600);
+                            $('#contact-content').php(responseText).slideDown(600);
                         });
                     }
                 });

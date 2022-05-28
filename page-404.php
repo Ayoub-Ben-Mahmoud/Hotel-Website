@@ -61,7 +61,7 @@
                     <button class="awe-btn awe-btn-12">SEARCH</button>  
                 </div>
                 
-                <p>or go back to <a href="index.html">Home Page</a> </p>
+                <p>or go back to <a href="index.php">Home Page</a> </p>
             </div>
 
         </section>
