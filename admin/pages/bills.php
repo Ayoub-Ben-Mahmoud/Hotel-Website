@@ -192,7 +192,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../index.html" class="nav-link">
+            <a href="../index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -269,22 +269,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <?php
-   $conn = new PDO("mysql:host=localhost;dbname=hotel","root","");
 
-$demandes = $conn->query("Select *
-from room 
-");
-
-              echo "<table><tr><th>Numéro de la demande</th><th>Etat de traitement</th></tr>";
-
-              while($d = $demandes->fetch()){
-                echo "<tr><td>{$d['id']}</td><td>{$d['type']}</td></tr>";
-
-                }
-
-echo "</table>";
-?>
               </div>
               <!-- /.card-body -->
             </div>

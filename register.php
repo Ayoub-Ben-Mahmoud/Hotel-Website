@@ -1,9 +1,43 @@
+<?php
+include 'connect.php';
+ if (isset($_POST['submit'])){
+               $username = $_POST['username'];
+               $firstname = $_POST['firstname'];
+               $lastname = $_POST['lastname'];
+               $email    = $_POST['email'];
+               $password = $_POST['password'];
+               $cpassword = $_POST['cpassword'];
+               
+                $duplicate = $conn->query("SELECT * FROM users WHERE username = '$username' OR email = '$email' ");
+                            
+                 if(empty($duplicate)){
+                    echo 
+                    "<script> alert ('Username or Email Has Already Taken'); </script>";
+                }
+                else{
+                if($password != $cpassword){
+                     echo
+                    "<script> alert ('Password Does NOT Match!!');</script>";
+                 }
+                else{
+                     $insert = $conn->exec("INSERT INTO users (username,name,surname,email,password) VALUES ('$username','$firstname','$lastname','$email','$password')");
+                        $statement = $conn->prepare($insert);
+                     echo
+                    "<script> alert ('Registration Successful');</script>";
+                 }
+              
+                }
+            }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <!-- TITLE -->
-    <title>Login</title>
+    <title>Register</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -14,6 +48,7 @@
     <link href='http://fonts.googleapis.com/css?family=Hind:400,300,500,600%7cMontserrat:400,700' rel='stylesheet'
           type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+    
 
     <!-- CSS LIBRARY -->
     <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
@@ -37,13 +72,10 @@
     <![endif]-->
 </head>
 
-<!--[if IE 7]>
-<body class="ie7 lt-ie8 lt-ie9 lt-ie10"> <![endif]-->
-<!--[if IE 8]>
-<body class="ie8 lt-ie9 lt-ie10"> <![endif]-->
-<!--[if IE 9]>
-<body class="ie9 lt-ie10"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
+<!--[if IE 7]> <body class="ie7 lt-ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 8]> <body class="ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]> <body class="ie9 lt-ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
 
     <!-- PRELOADER -->
@@ -73,8 +105,8 @@
                             <a href="!#"><i class="fa fa-instagram"></i></a>
                         </span>
                         <span class="login-register">
-                                <a href="login.html">Login</a>
-                                <a href="register.html">register</a>
+                                <a href="login.php">Login</a>
+                                <a href="register.php">register</a>
                             </span>
                         <!--<div class="dropdown currency">
                             <span>USD <i class="fa fa"></i></span>
@@ -114,49 +146,49 @@
                     <nav class="header_menu">
                             <ul class="menu">
                                 <li class="current-menu-item">
-                                    <a href="index.html">Home </a>
+                                    <a href="index.php">Home </a>
                                    <!-- <ul class="sub-menu">
-                                        <li class="current-menu-item"><a href="index.html">Home 1</a></li>
-                                        <li><a href="index-2.html">Home 2</a></li>
-                                        <li><a href="index-3.html">Home 3</a></li>
-                                        <li><a href="index.html">Home 4</a></li>
+                                        <li class="current-menu-item"><a href="index.php">Home 1</a></li>
+                                        <li><a href="index-2.php">Home 2</a></li>
+                                        <li><a href="index-3.php">Home 3</a></li>
+                                        <li><a href="index.php">Home 4</a></li>
                                     </ul>
                                 </li>-->
                                 
                                 <li>
                                     <a href="#">Room <span class="fa fa-caret-down"></span></a>
                                     <ul class="sub-menu">
-                                        <li><a href="room.html">Room</a></li>
+                                        <li><a href="room.php">Room</a></li>
                                         
                                         <!--
-                                        <li><a href="room-2.html">Room 2</a></li>
-                                        <li><a href="room-1.html">Room 1</a></li>
-                                        <li><a href="room-4.html">Room 4</a></li>
-                                        <li><a href="room-5.html">Room 5</a></li>
-                                        <li><a href="room-6.html">Room 6</a></li>
+                                        <li><a href="room-2.php">Room 2</a></li>
+                                        <li><a href="room-1.php">Room 1</a></li>
+                                        <li><a href="room-4.php">Room 4</a></li>
+                                        <li><a href="room-5.php">Room 5</a></li>
+                                        <li><a href="room-6.php">Room 6</a></li>
                                         -->
-                                        <li><a href="room-detail.html">Room Detail</a></li>
+                                        <li><a href="room-detail.php">Room Detail</a></li>
                                     </ul>
                                 </li>
                                 <!--<li>
-                                    <a href="restaurants-4.html">Restaurant </a>
+                                    <a href="restaurants-4.php">Restaurant </a>
                                     
                                     <a href="#">Restaurant <span class="fa fa-caret-down"></span></a>
                                     <ul class="sub-menu">
-                                        <li><a href="restaurants-1.html">Restaurant 1</a></li>
-                                        <li><a href="restaurants-2.html">Restaurant 2</a></li>
-                                        <li><a href="restaurants-3.html">Restaurant 3</a></li>
+                                        <li><a href="restaurants-1.php">Restaurant 1</a></li>
+                                        <li><a href="restaurants-2.php">Restaurant 2</a></li>
+                                        <li><a href="restaurants-3.php">Restaurant 3</a></li>
                                       
                                     </ul>
                                 </li>-->
                                 <li>
-                                    <a href="reservation-step-1.php">Reservation <span class="fa fa-caret-down"></span></a>
+                                    <a href="#">Reservation <span class="fa fa-caret-down"></span></a>
                                     <ul class="sub-menu">
-                                        <li><a href="reservation-step-1.html">Reservation Step 1</a></li>
-                                        <li><a href="reservation-step-2.html">Reservation Step 2</a></li>
-                                        <li><a href="reservation-step-3.html">Reservation Step 3</a></li>
-                                        <li><a href="reservation-step-4.html">Reservation Step 4</a></li>
-                                        <li><a href="reservation-step-5.html">Reservation Step 5</a></li>
+                                        <li><a href="reservation-step-1.php">Reservation Step 1</a></li>
+                                        <li><a href="reservation-step-2.php">Reservation Step 2</a></li>
+                                        <li><a href="reservation-step-3.php">Reservation Step 3</a></li>
+                                        <li><a href="reservation-step-4.php">Reservation Step 4</a></li>
+                                        <li><a href="reservation-step-5.php">Reservation Step 5</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -167,60 +199,60 @@
                                         <li>
                                             <a href="#">Guest Book <span class="fa fa-caret-right"></span></a>
                                             <ul class="sub-menu">
-                                                <li><a href="guest-book.html">Guest Book 1</a></li>
-                                                <li><a href="guest-book-2.html">Guest Book 2</a></li>
+                                                <li><a href="guest-book.php">Guest Book 1</a></li>
+                                                <li><a href="guest-book-2.php">Guest Book 2</a></li>
                                             </ul>
                                         </li>
                                         
                                         <li>
                                             <a href="#">Event <span class="fa fa-caret-right"></span></a>
                                             <ul class="sub-menu">
-                                                <li><a href="events.html">Events</a></li>
-                                                <li><a href="events-fullwidth.html">Events Fullwidth</a></li>
-                                                <li><a href="events-detail.html">Events Detail</a></li>
+                                                <li><a href="events.php">Events</a></li>
+                                                <li><a href="events-fullwidth.php">Events Fullwidth</a></li>
+                                                <li><a href="events-detail.php">Events Detail</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="attractions.html">Attractions</a>
+                                            <a href="attractions.php">Attractions</a>
                                         </li>
                                         <li>
                                             <a href="#">Term Condition <span class="fa fa-caret-right"></span></a>
                                             <ul class="sub-menu">
-                                                <li><a href="term-condition.html">Term Condition 1</a></li>
-                                                <li><a href="term-condition-2.html">Term Condition 2</a></li>
+                                                <li><a href="term-condition.php">Term Condition 1</a></li>
+                                                <li><a href="term-condition-2.php">Term Condition 2</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a href="">Activiti <span class="fa fa-caret-down"></span></a>
                                             <ul class="sub-menu">
-                                                <li><a href="activiti.html">Activiti</a></li>
-                                                <li><a href="activiti-detail.html">Activiti Detail</a></li>
+                                                <li><a href="activiti.php">Activiti</a></li>
+                                                <li><a href="activiti-detail.php">Activiti Detail</a></li>
                                             </ul>
                                         </li>
                             
-                                        <li><a href="shortcode.html">ShortCode</a></li>
-                                        <li><a href="page-404.html">404 Page</a></li>
-                                        <li><a href="comingsoon.html">Comming Soon</a></li>
+                                        <li><a href="shortcode.php">ShortCode</a></li>
+                                        <li><a href="page-404.php">404 Page</a></li>
+                                        <li><a href="comingsoon.php">Comming Soon</a></li>
                                     </ul>-->
                                 </li>
                                 <!--<li>
-                                    <a href="gallery-2.html">Gallery </a>
-                                    <!--<ul class="sub-menu">
-                                          <li><a href="gallery.html">Gallery Style 1</a></li>
-                                        <li><a href="gallery-2.html">Gallery Style 2</a></li>
-                                        <li><a href="gallery-3.html">Gallery Style 3</a></li> 
+                                    <a href="gallery-2.php">Gallery </a>
+                                    <ul class="sub-menu">
+                                          <li><a href="gallery.php">Gallery Style 1</a></li>
+                                        <li><a href="gallery-2.php">Gallery Style 2</a></li>
+                                        <li><a href="gallery-3.php">Gallery Style 3</a></li> 
                                     </ul>
                                 </li>-->
                                <!-- <li>
                                     <a href="#">Blog <span class="fa fa-caret-down"></span></a>
                                     <ul class="sub-menu">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-detail.html">Blog Detail</a></li>
-                                        <li><a href="blog-detail-fullwidth.html">Blog Detail Fullwidth</a></li>
+                                        <li><a href="blog.php">Blog</a></li>
+                                        <li><a href="blog-detail.php">Blog Detail</a></li>
+                                        <li><a href="blog-detail-fullwidth.php">Blog Detail Fullwidth</a></li>
                                     </ul>
                                 </li>-->
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="contact.php">Contact</a></li>
+                                <li><a href="about.php">About</a></li>
     
                             </ul>
                         </nav>
@@ -243,22 +275,37 @@
         <section class="section-account parallax bg-11">
             <div class="awe-overlay"></div>
             <div class="container">
+
+            
+
                 <div class="login-register">
                     <div class="text text-center">
-                        <h2>LOGIN ACCOUNT</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing</p>
-                        <form action="#" class="account_form">
+                        <h2>REGISTERATION FORM</h2>
+                        <p>If you have no account in Lotus! You can Register here!!</p>
+                        <form action="register.php" method="post" class="account_form">
                             <div class="field-form">
-                                <input type="text" class="field-text" placeholder="User name">
+                                <input type="text" class="field-text" name="username" placeholder="User name*" required >
                             </div>
                             <div class="field-form">
-                                <input type="password" class="field-text" placeholder="Password">
+                                <input type="text" class="field-text" name="firstname" placeholder="First Name*" required >
+                            </div>
+                            <div class="field-form">
+                                <input type="text" class="field-text" name="lastname" placeholder="Last Name*" required >
+                            </div>
+                            <div class="field-form">
+                                <input type="text" class="field-text" name="email" placeholder="Email*"  required>
+                            </div>
+                            <div class="field-form">
+                                <input type="password" class="field-text" name="password" placeholder="Password*" required>
+                                <span class="view-pass"><i class="lotus-icon-view"></i></span>
+                            </div>
+                            <div class="field-form">
+                                <input type="password" class="field-text" name="cpassword" placeholder="Confirm Password*" required>
                                 <span class="view-pass"><i class="lotus-icon-view"></i></span>
                             </div>
                             <div class="field-form field-submit">
-                                <button class="awe-btn awe-btn-13">Login</button>
+                                <button type="submit" name="submit" class="awe-btn awe-btn-13">REGISTER</button>
                             </div>
-                            <span class="account-desc">I don’t have an account  -  <a href="#">Forgot Password</a></span>
                         </form>
                     </div>
                 </div>
@@ -266,8 +313,8 @@
         </section>
         <!-- END / ACCOUNT -->
 
-                         <!-- FOOTER -->
-                         <footer id="footer">
+                          <!-- FOOTER -->
+                          <footer id="footer">
 
                             <!-- FOOTER CENTER -->
                             <div class="footer_center">
@@ -293,9 +340,9 @@
                                             <div class="widget">
                                                 <h4 class="widget-title">Page site</h4>
                                                 <ul>
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="room.html">Room</a></li>
-                                                    <li><a href="reservation-step-1.html">Reservation</a></li>
+                                                    <li><a href="index.php">Home</a></li>
+                                                    <li><a href="room.php">Room</a></li>
+                                                    <li><a href="reservation-step-1.php">Reservation</a></li>
                                                     <li><a href="check-out.php">Check-Out</a></li>
                                                 </ul>
                                             </div>
@@ -305,8 +352,8 @@
                                             <div class="widget">
                                                 <h4 class="widget-title">ABOUT</h4>
                                                 <ul>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="about.html">About</a></li>
+                                                    <li><a href="contact.php">Contact Us</a></li>
+                                                    <li><a href="about.php">About</a></li>
                                                 </ul>
                                             </div>
                                         </div>

@@ -39,7 +39,7 @@ To get the iframe 100% working you need the following content-wrapper markup:
       </div>
     </div>
     <a class="nav-link bg-light" href="#" data-widget="iframe-scrollleft"><i class="fas fa-angle-double-left"></i></a>
-    <ul class="navbar-nav overflow-hidden" role="tablist"><li class="nav-item active" role="presentation"><a href="#" class="btn-iframe-close" data-widget="iframe-close" data-type="only-this"><i class="fas fa-times"></i></a><a class="nav-link active" data-toggle="row" id="tab-index-html" href="#panel-index-html" role="tab" aria-controls="panel-index-html" aria-selected="true">Dashboard v1</a></li></ul>
+    <ul class="navbar-nav overflow-hidden" role="tablist"><li class="nav-item active" role="presentation"><a href="#" class="btn-iframe-close" data-widget="iframe-close" data-type="only-this"><i class="fas fa-times"></i></a><a class="nav-link active" data-toggle="row" id="tab-index.php" href="#panel-index.php" role="tab" aria-controls="panel-index.php" aria-selected="true">Dashboard v1</a></li></ul>
     <a class="nav-link bg-light" href="#" data-widget="iframe-scrollright"><i class="fas fa-angle-double-right"></i></a>
     <a class="nav-link bg-light" href="#" data-widget="iframe-fullscreen"><i class="fas fa-expand"></i></a>
   </div>
@@ -52,7 +52,7 @@ To get the iframe 100% working you need the following content-wrapper markup:
         <h2 class="display-4">Tab is loading <i class="fa fa-sync fa-spin"></i></h2>
       </div>
     </div>
-    <div class="tab-pane fade" id="panel-index-html" role="tabpanel" aria-labelledby="tab-index-html"><iframe src="./index.html"></iframe></div>
+    <div class="tab-pane fade" id="panel-index.php" role="tabpanel" aria-labelledby="tab-index.php"><iframe src="./index.php"></iframe></div>
   </div>
 </div>
 ```
@@ -122,4 +122,4 @@ $('.content-wrapper').IFrame({
 |removeActiveTab| Remove active iframe tab.
 {: .table .table-bordered .bg-light}
 
-Example: `$('.content-wrapper').IFrame('createTab', 'Home', 'index.html, 'index', true)`
+Example: `$('.content-wrapper').IFrame('createTab', 'Home', 'index.php, 'index', true)`

@@ -73,10 +73,20 @@
                         <a href="!#"><i class="fa fa-twitter"></i></a>
                         <a href="!#"><i class="fa fa-instagram"></i></a>
                     </span>
-                    <span class="login-register">
-                            <a href="login.html">Login</a>
-                            <a href="register.html">register</a>
-                        </span>
+                    <?php
+                    session_start();
+                    if(!isset($_SESSION['username'])){
+                        echo  " <span class='login-register'>
+                                                <a href='login.php'>Login</a>
+                                                <a href='register.php'>register</a>
+                                            </span>"
+                                            ;
+                    }else{
+                        echo"<span class='login-register'><span class='login-register'> <a href=''>",$_SESSION['username'],"</a> </span>   </span>";
+
+                        echo"<span class='login-register'> <a href='logout.php'>Logout</a> </span>";
+                    }
+                    ?>
                     <!--<div class="dropdown currency">
                         <span>USD <i class="fa fa"></i></span>
                         <ul>
@@ -115,12 +125,12 @@
                 <nav class="header_menu">
                         <ul class="menu">
                             <li class="current-menu-item">
-                                <a href="index.html">Home </a>
+                                <a href="index.php">Home </a>
                                <!-- <ul class="sub-menu">
-                                    <li class="current-menu-item"><a href="index.html">Home 1</a></li>
+                                    <li class="current-menu-item"><a href="index.php">Home 1</a></li>
                                     <li><a href="index-2.html">Home 2</a></li>
                                     <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index.html">Home 4</a></li>
+                                    <li><a href="index.php">Home 4</a></li>
                                 </ul>
                             </li>-->
                             

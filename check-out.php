@@ -1,8 +1,7 @@
 <?php
       include  'connect.php';
 
-      $data =  $conn->query("SELECT * FROM room INNER JOIN reservation ON room.id=reservation.id WHERE c.State = 'NY'
-      AND a.Status = 1 ");
+      $data =  $conn->query("SELECT * FROM room INNER JOIN reservation ON room.id=reservation.id WHERE reservation.userid = '4' ");
 
 ?>
 
@@ -81,7 +80,7 @@
                             <a href="!#"><i class="fa fa-instagram"></i></a>
                         </span>
                         <span class="login-register">
-                                <a href="login.html">Login</a>
+                                <a href="login.php">Login</a>
                                 <a href="register.html">register</a>
                             </span>
                         <!--<div class="dropdown currency">
@@ -122,12 +121,12 @@
                     <nav class="header_menu">
                             <ul class="menu">
                                 <li class="current-menu-item">
-                                    <a href="index.html">Home </a>
+                                    <a href="index.php">Home </a>
                                    <!-- <ul class="sub-menu">
-                                        <li class="current-menu-item"><a href="index.html">Home 1</a></li>
+                                        <li class="current-menu-item"><a href="index.php">Home 1</a></li>
                                         <li><a href="index-2.html">Home 2</a></li>
                                         <li><a href="index-3.html">Home 3</a></li>
-                                        <li><a href="index.html">Home 4</a></li>
+                                        <li><a href="index.php">Home 4</a></li>
                                     </ul>
                                 </li>-->
                                 
@@ -435,7 +434,7 @@
                     <div class="widget">
                         <h4 class="widget-title">Page site</h4>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.php">Home</a></li>
                             <li><a href="room.html">Room</a></li>
                             <li><a href="reservation-step-1.html">Reservation</a></li>
                             <li><a href="check-out.php">Check-Out</a></li>
